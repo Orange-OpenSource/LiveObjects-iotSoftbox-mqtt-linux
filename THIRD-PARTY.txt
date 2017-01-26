@@ -1,0 +1,5 @@
+Lists of third-party dependencies.
+- [paho.mqtt.embedded-c](https://github.com/eclipse/paho.mqtt.embedded-c)
+- [JSMN](https://github.com/zserge/jsmn)
+- [mbed TLS](https://github.com/ARMmbed/mbedtls)
+- [LiveObjects-iotSoftbox-mqtt-core](https://github.com/Orange-OpenSource/LiveObjects-iotSoftbox-mqtt-core)
