@@ -1,12 +1,12 @@
 [submodule "lib/jsmn"]
 	path = lib/jsmn
-	url = https://github.com/zserge/jsmn.git
+	url = https://github.com/zserge/jsmn
 [submodule "lib/mbedtls"]
 	path = lib/mbedtls
-	url = https://github.com/ARMmbed/mbedtls.git
+	url = https://github.com/ARMmbed/mbedtls
 [submodule "lib/paho.mqtt.embedded-c"]
 	path = lib/paho.mqtt.embedded-c
-	url = https://github.com/eclipse/paho.mqtt.embedded-c.git
+	url = https://github.com/eclipse/paho.mqtt.embedded-c
 [submodule "mqtt_live_objects/LiveObjects-iotSoftbox-mqtt-core"]
 	path = mqtt_live_objects/LiveObjects-iotSoftbox-mqtt-core
-	url = https://github.com/Orange-OpenSource/LiveObjects-iotSoftbox-mqtt-core.git
+	url = https://github.com/Orange-OpenSource/LiveObjects-iotSoftbox-mqtt-core
