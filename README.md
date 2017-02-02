@@ -130,10 +130,11 @@ sudo apt-get install git git-flow cmake crossbuild-essential-armhf
 
 ### Windows
 
-1. Install the [compiler](http://gnutoolchains.com/raspberry/).
-2. Update the cross compiler environment, by downloading the Sysroot. To do so use ```C:\SysGCC\Raspberry\TOOLS\UpdateSysroot.bat``` if ```C:\SysGCC``` is the installation path.
-3. Install [CMake](https://cmake.org/download/).
-4. Install [Perl](http://strawberryperl.com/).
+1. Install [Git](https://git-scm.com/download/)
+2. Install the [compiler](http://gnutoolchains.com/raspberry/).
+3. Update the cross compiler environment, by downloading the Sysroot. To do so use ```C:\SysGCC\Raspberry\TOOLS\UpdateSysroot.bat``` if ```C:\SysGCC``` is the installation path.
+4. Install [CMake](https://cmake.org/download/).
+5. Install [Perl](http://strawberryperl.com/).
 
 A detailed installation can be found [there](wiki/detailed-windows-setup.md).
 
