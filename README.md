@@ -187,7 +187,7 @@ You can only cross-compile the program on Windows. This is how to do it:
 ```
 mkdir build
 cd build
-cp ../script/cmakeWinSetup.bat .
+copy ../script/cmakeWinSetup.bat .
 cmakeWinSetup.bat
 make
 ```
