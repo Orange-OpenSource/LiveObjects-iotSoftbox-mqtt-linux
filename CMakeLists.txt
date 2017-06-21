@@ -31,6 +31,3 @@ add_subdirectory(examples/liveobjects_sample_basic)
 #add_subdirectory(examples/liveobjects_sample_update)
 #add_subdirectory(examples/liveobjects_sample_minimal)
 
-# Cmake-utilities
-#include(cmake-utilities/cppcheck.cmake)
-#include(cmake-utilities/cpplint.cmake)

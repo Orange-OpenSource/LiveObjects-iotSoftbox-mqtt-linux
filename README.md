@@ -31,15 +31,14 @@ Here is a table of content for this file:
 	- [Syslog](#syslog)
 - [Global structure](#global-structure)
 - [Detailed structure](#detailed-structure)
-	- [Cmake-utilities](#cmake-utilities)
 	- [Config-template](#config-template)
 	- [Example](#example)
 	- [Lib](#lib)
 		- [jsmn](#jsmn)
 		- [mbedTLS](#mbedtls)
 		- [paho mqtt](#paho-mqtt)
-	- [Mqtt_live_objects](#mqttliveobjects)
-		- [LiveObjects-iotSoftbox-mqtt-core](#LiveObjects-iotSoftbox-mqtt-core)
+	- [Mqtt_live_objects](#mqtt_live_objects)
+		- [LiveObjects-iotSoftbox-mqtt-core](#liveobjects-iotsoftbox-mqtt-core)
 		- [Platforms](#platforms)
 	- [Script](#script)
 - [Doxygen documentation](#doxygen-documentation)
@@ -60,7 +59,7 @@ Here is a table of content for this file:
 * Cmake: to generate the Makefiles
 * Cross-compiling toolchain: to build the library to any architechture
 * A SSH client (If you're using [Windows](http://www.putty.org/))
-* [LiveObjects account](http://m2m.orange.com)
+* [LiveObjects account](https://liveobjects.orange-business.com)
 
 You can also use SCP to transfer files to your devices ([Windows](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)).
 
@@ -215,7 +214,6 @@ You can log everything inside the syslog by switching
 
 ```
 iotsoftbox-mqtt-linux
-├── cmake-utilities
 ├── Config-template
 ├── examples
 ├── lib
@@ -224,9 +222,8 @@ iotsoftbox-mqtt-linux
 └── wiki
 
 ```
-- cmake-utilities: Various command association with cmake
 - config-template: Setup the library from here
-- [examples](#examples/README.md): bunch of examples using the library.
+- [examples](examples/README.md): bunch of examples using the library.
 - lib: all third-party libraries
 - mqtt_live_objects: specific implementations to platforms and common code with others client (like Arduino or mbed)
 - script: a bunch of various script to make things easy
@@ -236,26 +233,13 @@ iotsoftbox-mqtt-linux
 
 In alphabetical order.
 
-### Cmake-utilities
-
-Cmake utilities are useful to run prepared command like `cpplint` or `cppcheck`.
-You can configure where the source code is located and then run the command like this
-
-```bash
-cd build
-cmake ..
-cmake cpplint
-```
-
-This will run `cpplint` with the provided options. You need to have the tools installed to avoid errors at executions, it will not install it for you. However, you don't need to install them if you don't want to use them.
-
 ### Config-template
 
 This repository contains templates of all mandatories configurations files. Those files must be present in each examples.
 
 ### Example
 
-Go [there](#examples/README.md) to get more informations.
+Go [there](examples/README.md) to get more informations.
 
 ### Lib
 

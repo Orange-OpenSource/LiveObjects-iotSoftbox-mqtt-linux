@@ -34,9 +34,8 @@
 // set 0x0F to have all message dump (text+hexa)
 #define DBG_DFT_MSG_DUMP         0xf
 
-#define APPV_VERSION "LINUX BASIC SAMPLE V01.00"
-#define LOM_BUILD_TAG "BUILD LiveObjects IoT Basic 1.0"
-#define STREAM_PREFIX 0
+#define APPV_VERSION "LINUX BASIC SAMPLE V01.1"
+#define LOM_BUILD_TAG "BUILD LiveObjects IoT Update 1.1"
 
 uint8_t appv_log_level = DBG_DFT_MAIN_LOG_LEVEL;
 

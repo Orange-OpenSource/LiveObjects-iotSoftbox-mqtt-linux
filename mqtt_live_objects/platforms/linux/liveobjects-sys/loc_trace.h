@@ -21,6 +21,7 @@ extern "C" {
 
 #define LOTRACE_LEVEL(level)          lo_trace_level(level)
 
+#define LOTRACE_ERR_I(...)            lo_trace(1, __FILE__, __LINE__, __FUNCTION__, ##__VA_ARGS__)
 #define LOTRACE_ERR(...)              lo_trace(1, __FILE__, __LINE__, __FUNCTION__, ##__VA_ARGS__)
 #define LOTRACE_WARN(...)             lo_trace(2, __FILE__, __LINE__, __FUNCTION__, ##__VA_ARGS__)
 #define LOTRACE_NOTICE(...)           lo_trace(3, __FILE__, __LINE__, __FUNCTION__, ##__VA_ARGS__)

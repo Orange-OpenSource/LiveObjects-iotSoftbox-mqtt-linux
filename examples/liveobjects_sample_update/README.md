@@ -4,7 +4,7 @@ Here is the table of content:
 
 - [Aim of the example](#aim-of-the-example)
 - [Enable the example](#enable-the-example)
-- [How does it work ?](#how-does-it-work-?)
+- [How does it work ?](#how-does-it-work)
 - [Warnings](#warnings)
 
 ## Aim of the example
@@ -23,7 +23,7 @@ Go inside the top level cmake and uncomment the following line :
 #add_subdirectory(liveobjects_sample_update)
 ```
 
-## How does it work ?
+## How does it work?
 
 - Allocate a memory space big enough to hold the firmware
 ```c

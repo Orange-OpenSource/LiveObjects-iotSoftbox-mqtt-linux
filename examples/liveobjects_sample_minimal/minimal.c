@@ -39,8 +39,8 @@
 #define DBG_DFT_MSG_DUMP         0xf
 
 /* Various tag */
-#define APPV_VERSION "LINUX MINIMAL SAMPLE V01.00"
-#define LOM_BUILD_TAG "BUILD LiveObjects IoT Basic 1.0"
+#define APPV_VERSION "LINUX MINIMAL SAMPLE V01.1"
+#define LOM_BUILD_TAG "BUILD LiveObjects IoT Minimal 1.1"
 
 /* WiringPi */
 #define MAXTIMINGS	85

@@ -33,9 +33,8 @@
 // set 0x0F to have all message dump (text+hexa)
 #define DBG_DFT_MSG_DUMP         0xf
 
-#define APPV_VERSION "LINUX BASIC SAMPLE V01.00"
-#define LOM_BUILD_TAG "BUILD LiveObjects IoT Basic 1.0"
-#define STREAM_PREFIX 0
+#define APPV_VERSION "LINUX BASIC SAMPLE V01.1"
+#define LOM_BUILD_TAG "BUILD LiveObjects IoT Basic 1.1"
 
 uint8_t appv_log_level = DBG_DFT_MAIN_LOG_LEVEL;
 
@@ -177,7 +176,7 @@ LiveObjectsD_ResourceRespCode_t main_cb_rsc_ntfy(uint8_t state, const LiveObject
 		printf("***   name         = %s\r\n", rsc_ptr->rsc_name);
 		printf("***   version_old  = %s\r\n", version_old);
 		printf("***   version_new  = %s\r\n", version_new);
-		printf("***   size         = %u\r\n", size);
+		printf("***   size         = %"PRIu32"\r\n", size);
 		if (state) {
 			if (state == 1) {  // Completed without error
 				printf("***   state        = COMPLETED without error\r\n");
@@ -237,33 +236,33 @@ int main_cb_rsc_data(const LiveObjectsD_Resource_t *rsc_ptr, uint32_t offset) {
 	int ret;
 
 	if (appv_log_level > 1)
-		printf("*** rsc_data: rsc[%d]='%s' offset=%u - data ready ...\r\n", rsc_ptr->rsc_uref, rsc_ptr->rsc_name,
+		printf("*** rsc_data: rsc[%d]='%s' offset=%"PRIu32" - data ready ...\r\n", rsc_ptr->rsc_uref, rsc_ptr->rsc_name,
 				offset);
 
 	if (rsc_ptr->rsc_uref == RSC_IDX_MESSAGE) {
 		char buf[40];
 		if (offset > (sizeof(appv_status_message) - 1)) {
-			printf("*** rsc_data: rsc[%d]='%s' offset=%u > %u - OUT OF ARRAY\r\n", rsc_ptr->rsc_uref, rsc_ptr->rsc_name,
+			printf("*** rsc_data: rsc[%d]='%s' offset=%"PRIu32" > %zu - OUT OF ARRAY\r\n", rsc_ptr->rsc_uref, rsc_ptr->rsc_name,
 					offset, sizeof(appv_status_message) - 1);
 			return -1;
 		}
 		ret = LiveObjectsClient_RscGetChunck(rsc_ptr, buf, sizeof(buf) - 1);
 		if (ret > 0) {
 			if ((offset + ret) > (sizeof(appv_status_message) - 1)) {
-				printf("*** rsc_data: rsc[%u]='%s' offset=%u - read=%d => %u > "
-						"%u - OUT OF ARRAY\r\n", rsc_ptr->rsc_uref, rsc_ptr->rsc_name, offset, ret, offset + ret,
+				printf("*** rsc_data: rsc[%"PRIu32"]='%s' offset=%"PRIu32" - read=%d => %"PRIu32" > "
+						"%zu - OUT OF ARRAY\r\n", rsc_ptr->rsc_uref, rsc_ptr->rsc_name, offset, ret, offset + ret,
 						sizeof(appv_status_message) - 1);
 				return -1;
 			}
 			appv_rsc_offset += ret;
 			memcpy(&appv_status_message[offset], buf, ret);
 			appv_status_message[offset + ret] = 0;
-			printf("*** rsc_data: rsc[%d]='%s' offset=%u - read=%d/%u '%s'\r\n", rsc_ptr->rsc_uref, rsc_ptr->rsc_name,
+			printf("*** rsc_data: rsc[%d]='%s' offset=%"PRIu32" - read=%d/%zu '%s'\r\n", rsc_ptr->rsc_uref, rsc_ptr->rsc_name,
 					offset, ret, sizeof(buf) - 1, appv_status_message);
 		}
 	} else if (rsc_ptr->rsc_uref == RSC_IDX_IMAGE) {
 		if (offset > (sizeof(appv_rsc_image) - 1)) {
-			printf("*** rsc_data: rsc[%d]='%s' offset=%u > %u - OUT OF ARRAY\r\n", rsc_ptr->rsc_uref, rsc_ptr->rsc_name,
+			printf("*** rsc_data: rsc[%d]='%s' offset=%"PRIu32" > %zu - OUT OF ARRAY\r\n", rsc_ptr->rsc_uref, rsc_ptr->rsc_name,
 					offset, sizeof(appv_rsc_image) - 1);
 			return -1;
 		}
@@ -271,17 +270,17 @@ int main_cb_rsc_data(const LiveObjectsD_Resource_t *rsc_ptr, uint32_t offset) {
 		ret = LiveObjectsClient_RscGetChunck(rsc_ptr, &appv_rsc_image[offset], data_len);
 		if (ret > 0) {
 			if ((offset + ret) > (sizeof(appv_rsc_image) - 1)) {
-				printf("*** rsc_data: rsc[%d]='%s' offset=%u - read=%d => %u > "
-						"%u - OUT OF ARRAY\r\n", rsc_ptr->rsc_uref, rsc_ptr->rsc_name, offset, ret, offset + ret,
+				printf("*** rsc_data: rsc[%d]='%s' offset=%"PRIu32" - read=%d => %"PRIu32" > "
+						"%zu - OUT OF ARRAY\r\n", rsc_ptr->rsc_uref, rsc_ptr->rsc_name, offset, ret, offset + ret,
 						sizeof(appv_rsc_image) - 1);
 				return -1;
 			}
 			appv_rsc_offset += ret;
 			if (appv_log_level > 0)
-				printf("*** rsc_data: rsc[%d]='%s' offset=%u - read=%d/%d - %u/%u\r\n", rsc_ptr->rsc_uref,
+				printf("*** rsc_data: rsc[%d]='%s' offset=%"PRIu32" - read=%d/%d - %"PRIu32"/%"PRIu32"\r\n", rsc_ptr->rsc_uref,
 						rsc_ptr->rsc_name, offset, ret, data_len, appv_rsc_offset, appv_rsc_size);
 		} else {
-			printf("*** rsc_data: rsc[%d]='%s' offset=%u - read error (%d) - %u/%u\r\n", rsc_ptr->rsc_uref,
+			printf("*** rsc_data: rsc[%d]='%s' offset=%"PRIu32" - read error (%d) - %"PRIu32"/%"PRIu32"\r\n", rsc_ptr->rsc_uref,
 					rsc_ptr->rsc_name, offset, ret, appv_rsc_offset, appv_rsc_size);
 		}
 	} else {
@@ -460,7 +459,7 @@ uint32_t loop_cnt = 0;
 void appli_sched(void) {
 	++loop_cnt;
 	if (appv_log_level > 1)
-		printf("thread_appli: %u\r\n", loop_cnt);
+		printf("thread_appli: %"PRIu32"\r\n", loop_cnt);
 
 	// Simulate measures : Voltage and Temperature ...
 	if (appv_measures_volt <= 0.0)
@@ -477,7 +476,7 @@ void appli_sched(void) {
 	appv_measures_temp += appv_measures_temp_grad;
 
 	if (appv_log_level > 2)
-		printf("thread_appli: %u - %s PUBLISH - volt=%2.2f temp=%d\r\n", loop_cnt,
+		printf("thread_appli: %"PRIu32" - %s PUBLISH - volt=%2.2f temp=%d\r\n", loop_cnt,
 				appv_measures_enabled ? "DATA" : "NO", appv_measures_volt, appv_measures_temp);
 
 	if (appv_measures_enabled) {

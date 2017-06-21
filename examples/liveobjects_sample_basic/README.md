@@ -20,4 +20,4 @@ The application:
   * Update one "Resource" : message or image
   * Process a "Command" : RESET or LED     
 
-See [Datavenue Live Objects - complete guide]((https://liveobjects.orange-business.com/doc/html/lo_manual.html)
+See [Datavenue Live Objects - complete guide](https://liveobjects.orange-business.com/doc/html/lo_manual.html)
