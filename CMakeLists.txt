@@ -12,8 +12,11 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 find_package(Threads)
 
 # MbedTLS
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -I${CMAKE_SOURCE_DIR}/mbedtls_configs -DMBEDTLS_USER_CONFIG_FILE='<liveobjects_mbedtls_custom_config.h>'")
 add_subdirectory(lib/mbedtls)
 link_directories(lib/mbedtls/library)
+
+# Custom MbedTLS config file
 
 # JSMN
 add_library(jsmn lib/jsmn/jsmn.c)

@@ -55,9 +55,9 @@ char appv_status_message[150] = "READY";
 
 /// Set of status
 LiveObjectsD_Data_t appv_set_status[] = {
-		{ LOD_TYPE_STRING_C, "sample_version", APPV_VERSION },
-		{ LOD_TYPE_INT32, "sample_counter", &appv_status_counter },
-		{ LOD_TYPE_STRING_C, "sample_message", appv_status_message }
+		{ LOD_TYPE_STRING_C, "sample_version", APPV_VERSION, 1 },
+		{ LOD_TYPE_INT32, "sample_counter", &appv_status_counter, 1 },
+		{ LOD_TYPE_STRING_C, "sample_message", appv_status_message, 1 }
 };
 #define SET_STATUS_NB (sizeof(appv_set_status) / sizeof(LiveObjectsD_Data_t))
 

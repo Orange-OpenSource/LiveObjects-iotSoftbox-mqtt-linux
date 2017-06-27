@@ -31,7 +31,7 @@
 #define DBG_DFT_LOMC_LOG_LEVEL 3
 
 // set 0x0F to have all message dump (text+hexa)
-#define DBG_DFT_MSG_DUMP         0xf
+#define DBG_DFT_MSG_DUMP         0xF
 
 #define APPV_VERSION "LINUX BASIC SAMPLE V01.1"
 #define LOM_BUILD_TAG "BUILD LiveObjects IoT Basic 1.1"
@@ -57,9 +57,9 @@ char appv_status_message[150] = "READY";
 
 /// Set of status
 LiveObjectsD_Data_t appv_set_status[] = {
-		{ LOD_TYPE_STRING_C, "sample_version", APPV_VERSION },
-		{ LOD_TYPE_INT32, "sample_counter", &appv_status_counter },
-		{ LOD_TYPE_STRING_C, "sample_message", appv_status_message }
+		{ LOD_TYPE_STRING_C, "sample_version", APPV_VERSION, 1 },
+		{ LOD_TYPE_INT32, "sample_counter", &appv_status_counter, 1 },
+		{ LOD_TYPE_STRING_C, "sample_message", appv_status_message, 1 }
 };
 #define SET_STATUS_NB (sizeof(appv_set_status) / sizeof(LiveObjectsD_Data_t))
 
@@ -86,9 +86,9 @@ float appv_measures_volt = 5.0;
 
 /// Set of Collected data (published on a data stream)
 LiveObjectsD_Data_t appv_set_measures[] = {
-		{ LOD_TYPE_UINT32, "counter", &appv_measures_counter },
-		{ LOD_TYPE_INT32, "temperature", &appv_measures_temp },
-		{ LOD_TYPE_FLOAT, "battery_level", &appv_measures_volt }
+		{ LOD_TYPE_UINT32, "counter", &appv_measures_counter, 1 },
+		{ LOD_TYPE_INT32, "temperature", &appv_measures_temp, 1 },
+		{ LOD_TYPE_FLOAT, "battery_level", &appv_measures_volt, 1 }
 };
 #define SET_MEASURES_NB (sizeof(appv_set_measures) / sizeof(LiveObjectsD_Data_t))
 
@@ -114,10 +114,10 @@ struct conf_s {
 
 /// Set of configuration parameters
 LiveObjectsD_Param_t appv_set_param[] = {
-		{ PARM_IDX_NAME, { LOD_TYPE_STRING_C, "name", appv_conf.name } },
-		{ PARM_IDX_TIMEOUT, { LOD_TYPE_UINT32, "timeout", (void *) &appv_cfg_timeout } },
-		{ PARM_IDX_THRESHOLD, { LOD_TYPE_INT32, "threshold", &appv_conf.threshold } },
-		{ PARM_IDX_GAIN, { LOD_TYPE_FLOAT, "gain", &appv_conf.gain } }
+		{ PARM_IDX_NAME, { LOD_TYPE_STRING_C, "name", appv_conf.name, 1 } },
+		{ PARM_IDX_TIMEOUT, { LOD_TYPE_UINT32, "timeout", (void *) &appv_cfg_timeout, 1 } },
+		{ PARM_IDX_THRESHOLD, { LOD_TYPE_INT32, "threshold", &appv_conf.threshold, 1 } },
+		{ PARM_IDX_GAIN, { LOD_TYPE_FLOAT, "gain", &appv_conf.gain, 1 } }
 };
 #define SET_PARAM_NB (sizeof(appv_set_param) / sizeof(LiveObjectsD_Param_t))
 

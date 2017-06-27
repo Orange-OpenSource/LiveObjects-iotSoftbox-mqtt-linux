@@ -2,7 +2,7 @@
 
 This repository contains LiveObject IoT Client Library (used to connect devices to LiveObject Server from our partners).
 
-Please, have a look to the [user manual](docs/liveobjects_starterkit_linux_v1.0.pdf) to have a presentation of the library and to be more familiar with it.
+Please, have a look to the [user manual](docs\liveobjects_starterkit_linux_v1.0-draft.pdf) to have a presentation of the library and to be more familiar with it.
 
 For more o,formation about datavenue, you can visit [Datavenue Live Objects - complete guide](https://liveobjects.orange-business.com/doc/html/lo_manual.html).
 
@@ -110,7 +110,7 @@ sudo apt-get install git git-flow cmake gcc-arm-linux-gnueabihf
 
 Tested for Debian 8.6
 
-**All commands have to be run as root (su command) **
+**All commands have to be run as root (su command)**
 
 **For the Raspberry Pi 1** replace `armhf` by `armel`.
 The cross-compiler remains `arm-linux-gnueabi-gcc` for the Pi 1.
@@ -129,11 +129,10 @@ sudo apt-get install git git-flow cmake crossbuild-essential-armhf
 
 ### Windows
 
-1. Install [Git](https://git-scm.com/download/)
-2. Install the [compiler](http://gnutoolchains.com/raspberry/).
-3. Update the cross compiler environment, by downloading the Sysroot. To do so use ```C:\SysGCC\Raspberry\TOOLS\UpdateSysroot.bat``` if ```C:\SysGCC``` is the installation path.
-4. Install [CMake](https://cmake.org/download/).
-5. Install [Perl](http://strawberryperl.com/).
+1. Install the [compiler](http://gnutoolchains.com/raspberry/).
+2. Update the cross compiler environment, by downloading the Sysroot. To do so use ```C:\SysGCC\Raspberry\TOOLS\UpdateSysroot.bat``` if ```C:\SysGCC``` is the installation path.
+3. Install [CMake](https://cmake.org/download/).
+4. Install [Perl](http://strawberryperl.com/).
 
 A detailed installation can be found [there](wiki/detailed-windows-setup.md).
 
@@ -187,7 +186,7 @@ You can only cross-compile the program on Windows. This is how to do it:
 ```
 mkdir build
 cd build
-copy ../script/cmakeWinSetup.bat .
+cp ../script/cmakeWinSetup.bat .
 cmakeWinSetup.bat
 make
 ```
@@ -202,13 +201,16 @@ You can also change the debug Level (more or less verbose) into each example.
 ```
 It goes from 1 (only error) to 6 (everything).
 
+If you want to remove the message dump, change ```DBG_DFT_MSG_DUMP``` to 0x0
+0x1, 0x2, 0x4 and 0x8 are intermediate levels
+
 ### Syslog
 
 You can log everything inside the syslog by switching
 ```c
 #define SYSLOG 0
 ```
- to 1 in "config/liveobjects_dev_params.h". It will print everything into /var/log/syslog
+ to 1 in "config/liveobjects_dev_params.h". It will print everything into /var/log/syslog instead of the standard output.
 
 ## Global structure
 
@@ -217,6 +219,7 @@ iotsoftbox-mqtt-linux
 ├── Config-template
 ├── examples
 ├── lib
+├── mbedtls_config
 ├── mqtt_live_objects
 ├── script
 └── wiki
@@ -225,6 +228,7 @@ iotsoftbox-mqtt-linux
 - config-template: Setup the library from here
 - [examples](examples/README.md): bunch of examples using the library.
 - lib: all third-party libraries
+- mbedtls_config: extra config for mbedtls
 - mqtt_live_objects: specific implementations to platforms and common code with others client (like Arduino or mbed)
 - script: a bunch of various script to make things easy
 - wiki: Various help / information

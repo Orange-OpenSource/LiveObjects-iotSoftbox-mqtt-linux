@@ -73,9 +73,9 @@ char appv_status_message[150] = "READY";
 
 /// Set of status
 LiveObjectsD_Data_t appv_set_status[] = {
-		{ LOD_TYPE_STRING_C, "sample_version", APPV_VERSION },
-		{ LOD_TYPE_INT32, "sample_counter", &appv_status_counter },
-		{ LOD_TYPE_STRING_C, "sample_message", appv_status_message }
+		{ LOD_TYPE_STRING_C, "sample_version", APPV_VERSION, 1 },
+		{ LOD_TYPE_INT32, "sample_counter", &appv_status_counter, 1 },
+		{ LOD_TYPE_STRING_C, "sample_message", appv_status_message, 1 }
 };
 #define SET_STATUS_NB (sizeof(appv_set_status) / sizeof(LiveObjectsD_Data_t))
 
@@ -95,9 +95,9 @@ uint32_t appv_measures_hum = -1;
 
 /// Set of Collected data (published on a data stream)
 LiveObjectsD_Data_t appv_set_measures[] = {
-		{ LOD_TYPE_UINT32, "counter", &appv_measures_counter },
-		{ LOD_TYPE_FLOAT, "temperature", &appv_measures_temp },
-		{ LOD_TYPE_UINT32, "humidity", &appv_measures_hum }
+		{ LOD_TYPE_UINT32, "counter", &appv_measures_counter, 1 },
+		{ LOD_TYPE_FLOAT, "temperature", &appv_measures_temp, 1 },
+		{ LOD_TYPE_UINT32, "humidity", &appv_measures_hum, 1 }
 };
 #define SET_MEASURES_NB (sizeof(appv_set_measures) / sizeof(LiveObjectsD_Data_t))
 

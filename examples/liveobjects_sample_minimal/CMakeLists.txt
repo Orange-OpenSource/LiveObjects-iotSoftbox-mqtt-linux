@@ -1,4 +1,4 @@
-# Define various var name
+﻿# Define various var name
 set(EXECUTABLE_NAME minimal)
 set(CORE_LIB loc_core_for_${EXECUTABLE_NAME})
 set(SOURCE_PATH ${CMAKE_SOURCE_DIR}/mqtt_live_objects)
@@ -13,6 +13,7 @@ include_directories(${LIB_PATH})
 include_directories(${LIB_PATH}/paho.mqtt.embedded-c/MQTTPacket/src)
 include_directories(${LIB_PATH}/mbedtls/include)
 include_directories(${PLATFORM_PATH})
+include_directories(${CMAKE_SOURCE_DIR}/mbedtls_configs)
 
 # Bring the Config
 include_directories(.)

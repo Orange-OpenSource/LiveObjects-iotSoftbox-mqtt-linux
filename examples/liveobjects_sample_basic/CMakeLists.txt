@@ -13,6 +13,7 @@ include_directories(${LIB_PATH})
 include_directories(${LIB_PATH}/paho.mqtt.embedded-c/MQTTPacket/src)
 include_directories(${LIB_PATH}/mbedtls/include)
 include_directories(${PLATFORM_PATH})
+include_directories(${CMAKE_SOURCE_DIR}/mbedtls_configs)
 
 # Bring the Config
 include_directories(.)
