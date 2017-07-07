@@ -164,6 +164,7 @@ Two options for that :
 #### Local build
 
 ```bash
+cd LiveObjects-iotSoftbox-mqtt-linux
 mkdir build
 cd build
 cmake ..
@@ -173,6 +174,7 @@ make
 #### Cross-Compilation build
 
 ```bash
+cd LiveObjects-iotSoftbox-mqtt-linux
 mkdir build
 cd build
 cmake -DCMAKE_C_COMPILER=<Path to the compiler> ..
@@ -181,27 +183,32 @@ make
 
 ### Windows
 
-You can only cross-compile the program on Windows. This is how to do it:
+You can only cross-compile the program on Windows. This is how to do it from cmd.exe:
 
-```
+```bash
+cd LiveObjects-iotSoftbox-mqtt-linux
 mkdir build
 cd build
-cp ../script/cmakeWinSetup.bat .
+copy ../script/cmakeWinSetup.bat .
 cmakeWinSetup.bat
 make
 ```
+
+If you are using git bash for instance it will be slightly different:
+- Use cp instead of copy
+- run cmakeWinSetup.bat like this : ```./cmakeWinSetup.bat```
 
 ### Debug
 
 To add the debug flag to the compiler, you must run cmake with ```-DCMAKE_BUILD_TYPE=Debug```
 
 You can also change the debug Level (more or less verbose) into each example.
-```
+```c
 #define DBG_DFT_MAIN_LOG_LEVEL <Debug Level>
 ```
 It goes from 1 (only error) to 6 (everything).
 
-If you want to remove the message dump, change ```DBG_DFT_MSG_DUMP``` to 0x0
+If you want to remove the message dump, change ```DBG_DFT_MSG_DUMP``` to 0x0,
 0x1, 0x2, 0x4 and 0x8 are intermediate levels
 
 ### Syslog

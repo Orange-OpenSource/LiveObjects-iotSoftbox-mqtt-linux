@@ -16,8 +16,6 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -I${CMAKE_SOURCE_DIR}/mbedtls_configs -DMBED
 add_subdirectory(lib/mbedtls)
 link_directories(lib/mbedtls/library)
 
-# Custom MbedTLS config file
-
 # JSMN
 add_library(jsmn lib/jsmn/jsmn.c)
 
@@ -33,4 +31,3 @@ set(COMMON_LIB_LIST ${CMAKE_THREAD_LIBS_INIT} MQTTPacket jsmn mbedtls mbedcrypto
 add_subdirectory(examples/liveobjects_sample_basic)
 #add_subdirectory(examples/liveobjects_sample_update)
 #add_subdirectory(examples/liveobjects_sample_minimal)
-
