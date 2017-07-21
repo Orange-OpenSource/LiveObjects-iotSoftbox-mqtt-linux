@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.2.0 (Jul 21, 2017)
+
+**Implemented enhancements:**
+
+- **Changed the way the [APIKEY](README.md#api-key) is filled**
+
 ## 1.1.1 (Jun 27, 2017)
 
 **Implemented enhancements:**
