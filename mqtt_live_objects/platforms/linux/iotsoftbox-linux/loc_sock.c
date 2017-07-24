@@ -20,6 +20,7 @@
 #include <string.h>
 #include <arpa/inet.h>
 #include <errno.h>
+#include <netdb.h>
 #include <netinet/in.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -63,13 +64,36 @@ int LO_sock_connect(short retry, const char *remoteHostAddress,
 	if ((*remoteHostAddress >= '0') && (*remoteHostAddress <= '9')) {
 		remote_host = remoteHostAddress;
 	} else {
-		// DNS resolver ?
-		if (!strcmp(remoteHostAddress, "liveobjects.orange-business.com")) {
-			remote_host = "84.39.42.214";
+		struct addrinfo hints, *res;
+		int errcode;
+		char addrstr[100];
+		void *ptr;
+
+		memset (&hints, 0, sizeof (hints));
+		hints.ai_family = PF_UNSPEC;
+		hints.ai_socktype = SOCK_STREAM;
+		hints.ai_flags |= AI_CANONNAME;
+
+		errcode = getaddrinfo (remoteHostAddress, NULL, &hints, &res);
+		if (errcode == 0) {
+			inet_ntop (res->ai_family, res->ai_addr->sa_data, addrstr, 100);
+
+			switch (res->ai_family)
+			{
+			case AF_INET:
+				ptr = &((struct sockaddr_in *) res->ai_addr)->sin_addr;
+				break;
+			case AF_INET6:
+				ptr = &((struct sockaddr_in6 *) res->ai_addr)->sin6_addr;
+				break;
+			}
+			inet_ntop (res->ai_family, ptr, addrstr, 100);
+			remote_host = addrstr;
+			LOTRACE_INF("   DNS Ok !! => IP address used = %s  ...", remote_host);
 		} else {
-			remote_host = "84.39.42.208";
+			LOTRACE_ERR("   DNS failed -> Check the server name. Address used : %s", remoteHostAddress);
+			return -1;
 		}
-		LOTRACE_INF("   NO DNS !! => use IP address = %s  ...", remote_host);
 	}
 
 	sock_fd = socket(PF_INET, SOCK_STREAM, 0);

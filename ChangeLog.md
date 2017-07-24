@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.2.1 (Jul 24, 2017)
+
+**Implemented enhancements:**
+
+- Added DNS support
+
 ## 1.2.0 (Jul 21, 2017)
 
 **Implemented enhancements:**
