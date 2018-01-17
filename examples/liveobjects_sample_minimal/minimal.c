@@ -25,11 +25,29 @@
 /* Raspberry Pi GPIO */
 #include <wiringPi.h>
 
-/* LiveObjects Device settings: IP Address, TLS or not , ..;*/
-#include "config/liveobjects_dev_params.h"
-
 /* LiveObjects api */
 #include "liveobjects_iotsoftbox_api.h"
+
+/* Default LiveObjects device settings : name space and device identifier*/
+#define LOC_CLIENT_DEV_NAME_SPACE            "LiveObjectsDomain"
+
+#define LOC_CLIENT_DEV_ID                    "LO_softboxlinux_01"
+
+/** Here, set your LiveObject Apikey. It is mandatory to run the application
+ *
+ * C_LOC_CLIENT_DEV_API_KEY_P1 must be the first sixteen char of the ApiKey
+ * C_LOC_CLIENT_DEV_API_KEY_P1 must be the last sixteen char of the ApiKey
+ *
+ * If your APIKEY is 0123456789abcdeffedcba9876543210 then
+ * it should look like this :
+ *
+ * #define C_LOC_CLIENT_DEV_API_KEY_P1			0x0123456789abcdef
+ * #define C_LOC_CLIENT_DEV_API_KEY_P2			0xfedcba9876543210
+ *
+ * */
+
+#define C_LOC_CLIENT_DEV_API_KEY_P1			0x0123456789abcdef
+#define C_LOC_CLIENT_DEV_API_KEY_P2			0xfedcba9876543210
 
 /* Debug */
 #define DBG_DFT_MAIN_LOG_LEVEL 3
@@ -198,9 +216,14 @@ void appli_sched(void) {
 bool mqtt_start(void *ctx) {
 
 	LiveObjectsClient_SetDbgLevel(appv_log_level);
+	LiveObjectsClient_SetDevId(LOC_CLIENT_DEV_ID);
+	LiveObjectsClient_SetNameSpace(LOC_CLIENT_DEV_NAME_SPACE);
+
+	unsigned long long apikey_p1 = C_LOC_CLIENT_DEV_API_KEY_P1;
+	unsigned long long apikey_p2 = C_LOC_CLIENT_DEV_API_KEY_P2;
 
 	printf("mqtt_start: LiveObjectsClient_Init ...\n");
-	if (LiveObjectsClient_Init(NULL)) {
+	if(LiveObjectsClient_Init(NULL, apikey_p1, apikey_p2)) {
 		printf("mqtt_start: ERROR returned by LiveObjectsClient_Init\n");
 		return false;
 	}
