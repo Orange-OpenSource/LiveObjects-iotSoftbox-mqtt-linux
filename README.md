@@ -9,7 +9,7 @@ This repository contains LiveObject IoT Client Library (used to connect devices 
 
 Please, have a look to the [user manual](docs/liveobjects_starterkit_linux_v1.1.pdf) to have a presentation of the library and to be more familiar with it.
 
-For more o,formation about datavenue, you can visit [Datavenue Live Objects - complete guide](https://liveobjects.orange-business.com/doc/html/lo_manual.html).
+For more information about datavenue, you can visit [Datavenue Live Objects - complete guide](https://liveobjects.orange-business.com/doc/html/lo_manual.html).
 
 especially the [Device mode](https://liveobjects.orange-business.com/doc/html/lo_manual.html#MQTT_MODE_DEVICE) section.
 
@@ -79,17 +79,21 @@ Visit [IoT Soft Box powered by Datavenue](https://liveobjects.orange-business.co
 
 ### Setup the LiveObjects header file
 
-**Warning : each example has independent config dir**
+**Warning : each example has independent configuration**
 
 #### API key
 In the config directory of every example, you will find 3 files to customize the behavior of the library.
-Edit those files to change some values, in particular the **LiveObjects API key** in `liveobjects_dev_params.h`.
+Edit those files to change some values. in particular the **LiveObjects API key** in the main file `nameOfTheExample.c`.
 
 For security purpose, you will need to split the ApiKey in two parts.
 The first part is the first sixteen char of the ApiKey and the second one is the last sixteen char of the ApiKey.
  An example is given below:
 
 ```c
+/* Default LiveObjects device settings : name space and device identifier*/
+#define LOC_CLIENT_DEV_NAME_SPACE            "LiveObjectsDomain"
+#define LOC_CLIENT_DEV_ID                    "LO_softboxlinux_01"
+
 /** Here, set your LiveObject Apikey. It is mandatory to run the application
  *
  * C_LOC_CLIENT_DEV_API_KEY_P1 must be the first sixteen char of the ApiKey
@@ -103,12 +107,12 @@ The first part is the first sixteen char of the ApiKey and the second one is the
  *
  * */
 
- #define C_LOC_CLIENT_DEV_API_KEY_P1			0x0123456789abcdef
- #define C_LOC_CLIENT_DEV_API_KEY_P2			0xfedcba9876543210
+#define C_LOC_CLIENT_DEV_API_KEY_P1			0x0123456789abcdef
+#define C_LOC_CLIENT_DEV_API_KEY_P2			0xfedcba9876543210
 ```
 
 #### Security
-From this file (`liveobjects_dev_params.h`) you can also disable TLS By switching `#define SECURITY_ENABLED 1` to 0.
+From the file `liveobjects_dev_params.h` you can also disable TLS By switching `#define SECURITY_ENABLED 1` to 0.
 If the security is disabled your device will communicate in plain text with the platform.
 
 By disabling the security, MbedTLS code's will still be embedded because it is used by the resource appliance.
