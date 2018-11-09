@@ -7,7 +7,7 @@ Please refers to the [Changelog](ChangeLog.md) to check the latest change and im
 
 This repository contains LiveObject IoT Client Library (used to connect devices to LiveObject Server from our partners).
 
-Please, have a look to the [user manual](docs/liveobjects_starterkit_linux_v1.1.pdf) to have a presentation of the library and to be more familiar with it.
+Please, have a look to the [user manual](https://github.com/Orange-OpenSource/LiveObjects-iotSoftbox-mqtt-linux/blob/master/docs/liveobjects_starterkit_linux_v1.2.pdf) to have a presentation of the library and to be more familiar with it.
 
 For more information about datavenue, you can visit [Datavenue Live Objects - complete guide](https://liveobjects.orange-business.com/doc/html/lo_manual.html).
 
